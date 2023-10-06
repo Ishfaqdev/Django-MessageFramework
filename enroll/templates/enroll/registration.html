@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <title>Message Framework</title>
+</head>
+
+<body>
+    <form method="post" action="">
+        <h1>Message Framework</h1>
+        {% if messages %}
+            {% for message in messages  %}
+                <span class="message{% if message.tags %} {{message.tags}}-message{% endif %}">{{message}}</span>
+            {% endfor %}
+        {% endif %}
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
